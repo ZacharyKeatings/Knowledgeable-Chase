@@ -47,7 +47,7 @@ def main_menu():
     7. Exit
     """
     
-    answers = ["1", "2", "3", "4"]
+    answers = ["1", "2", "3", "4", "5", "6", "7"]
     print(msg)
     choice = input("Enter your number here:\n")
     if choice not in answers:
@@ -149,6 +149,7 @@ def difficulty():
         main_menu()
     else:
         clear_screen()
+        #Check if database has any rows here
         category(choice)
 
 #User can roll a single die
@@ -175,16 +176,12 @@ connect_database(r"Trivia.db")
 main_menu()
 
 #INCOMPLETE:
-#add_trivia()
 #delete_trivia()
 #edit_trivia()
 #question()
 #category()
 #difficulty()
 
-#ADD: add_trivia() - add restrictions to difficulty [easy, medium, hard]
-
-#ADD: difficulty() - Change "answers" variable to values from database.
 #ADD: difficulty() - If database is BLANK, display error message
 
 #ADD: category() - Connect to database
