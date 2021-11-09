@@ -1,4 +1,4 @@
-#Knowledgeable Chase
+## Knowledgeable Chase
 
 This is a Trivia game assistant. You can use it for bar/pub trivia nights, or while playing Trivial Pursuit.
 It uses an SQLite database that stores all trivia questions. The tables include: Unique ID, Question, Answer, Difficulty, Category.
