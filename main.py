@@ -96,11 +96,11 @@ def add_trivia():
             clear_screen()
             add_trivia()
         else:
-            conn = sqlite3.connect('Trivia.db')
+            conn = sqlite3.connect("Trivia.db")
             cursor = conn.cursor()
-            cursor.execute('INSERT INTO Trivia (id, Question, Answer, Difficulty, Category) VALUES(NULL, ?, ?, ?, ?)', (question, answer, difficulty, category))
+            cursor.execute("INSERT INTO Trivia (id, Question, Answer, Difficulty, Category) VALUES(NULL, ?, ?, ?, ?)", (question, answer, difficulty, category))
             conn.commit()
-            print("question saved!")
+            print("Question saved!")
             conn.close()
             add_trivia()
 
@@ -114,7 +114,15 @@ def edit_trivia():
 
 #View trivia database
 def view_trivia():
-    pass
+    conn = sqlite3.connect("Trivia.db")
+    cursor = conn.cursor()
+    cursor.execute("SELECT * from Trivia")
+    result = cursor.fetchall()
+    for row in result:
+        print (row)
+    conn.close()
+    input("Press enter to return to the main menu.")
+    main_menu()
 
 #User see the trivia question
 def question(category, difficulty):
@@ -197,4 +205,4 @@ main_menu()
 
 #ADD: edit_trivia() - create function
 
-#ADD: view_trivia() - create function
+#ADD: view_trivia() - Display data in nicer format
