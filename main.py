@@ -106,7 +106,27 @@ def add_trivia():
 
 #Remove questions from database      
 def delete_trivia():
-    pass
+    answer = ["Yes", "No"]
+    choice = input("Do you wish to delete a trivia question? Yes or No.\n")
+    choice = choice.capitalize()
+    if choice not in answer:
+        clear_screen()
+        print("Invalid answer. Please say Yes or No.\n")
+        delete_trivia()
+    elif choice == "No":
+        clear_screen()
+        print("You just returned from the delete trivia screen.\n")
+        main_menu()
+    elif choice == "Yes":
+        del_id = input("Please enter it's id.\n")
+        conn = sqlite3.connect("Trivia.db")
+        cursor = conn.cursor()
+        cursor.execute("DELETE FROM Trivia WHERE id=?", (del_id))
+        conn.commit()
+        conn.close()
+        input("Press enter to return to the main menu.")
+        clear_screen()
+        main_menu()
     
 #Edit database entries
 def edit_trivia():
@@ -121,7 +141,8 @@ def view_trivia():
     for row in result:
         print (row)
     conn.close()
-    input("Press enter to return to the main menu.")
+    input("Press enter to return to the main menu.\n")
+    clear_screen()
     main_menu()
 
 #User see the trivia question
